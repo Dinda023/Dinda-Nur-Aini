@@ -1,0 +1,61 @@
+import os
+
+os.system("cls")
+print ("""          Post Test 2 Algoritma dan Struktur Data
+
+Nama: Dinda Nur Aini
+NIM: 2209116023
+SI A'22""")
+print('-'*45)
+print("""
+Hasil pencarian data:
+""")
+
+VariableList = ["Arsel", "Avivah", "Daiva", ["Wahyu", "Wibi"]]
+
+def fibonacci(arr, x, n):
+    fibonacci1 = 0
+    fibonacci2 = 1
+    fibonacci = fibonacci1 + fibonacci2
+    while (fibonacci < n):
+        fibonacci1 = fibonacci2
+        fibonacci2 = fibonacci
+        fibonacci = fibonacci1 + fibonacci2
+    offset = -1
+    while (fibonacci > 1):
+        i = min(offset + fibonacci1, n-1)
+        if (arr[i] < x):
+            fibonacci = fibonacci2
+            fibonacci2 = fibonacci1
+            fibonacci1 = fibonacci - fibonacci2
+            offset = i
+        elif (arr[i] > x):
+            fibonacci = fibonacci1
+            fibonacci2 = fibonacci2 - fibonacci1
+            fibonacci1 = fibonacci - fibonacci2
+        else:
+            return i
+    if (fibonacci2 and arr[n-1] == x):
+        return n-1
+    return -1
+    
+def search():
+    for i in range(len(VariableList)):
+        if isinstance(VariableList[i], list):
+            for j in range(len(VariableList[i])):
+                if VariableList[i][j] == x:
+                    print(f"    {x} di index ke-{i}, kolom ke-{j}")
+        elif VariableList[i] == x:
+            print(f"    {x} di index ke-{i}")
+
+x = "Arsel"
+search()
+x = "Avivah"
+search()
+x = "Daiva"
+search()
+
+x = "Wahyu"
+search()
+x = "Wibi"
+search()
