@@ -1,0 +1,82 @@
+import os
+
+def get_login():
+    print('=' * 20)
+    print('Halaman Login')
+    username = input('Masukan Username Anda: ')
+    password = input('Masukan Password: ')
+ 
+    if username == 'User' and password == '123':
+        print('login berhasil...\n\n')
+        os.system("cls")
+    else:
+        print('login gagal coba lagi..')
+        get_login()
+
+class Cafe:
+    def __init__(self, list, name):
+        self.kopiList = list
+        self.name = name
+
+    def displayKopi(self):
+        print(f"List kamu: {self.name}")
+        nomor = 1
+        for i in self.kopiList:
+            print(" {}. {}".format(nomor, i))
+            nomor += 1
+
+    def addKopi(self, kopi):
+        self.kopiList.append(kopi)
+        print("Berhasil ditambahkan!")
+
+    def deleteKopi(self, kopi):
+        if kopi in self.kopiList:
+            self.kopiList.remove(kopi)
+            print("Berhasil dihapus!")
+        else:
+            print("Kopi tidak ada di list!")
+
+if __name__ == '__main__':
+    listkopi = Cafe(['Luwak', 'Latte', 'Macchiato', 'Espresso', 'Cold Brew'], "Favorit Kopi")
+
+    get_login()
+    while(True):
+        print(f"Selamat datang!")
+        print("""
+----------------------------------
+                MENU
+----------------------------------
+    1. Lihat List Favorit
+    2. Tambah List Favorit
+    3. Hapus dari List Favorit
+----------------------------------""")
+        pilihan = input("Pilih menu: ")
+        if pilihan not in ['1','2','3']:
+            print ("Masukan pilihan yang benar!")
+            continue
+        else:
+            pilihan = int(pilihan)
+
+        if pilihan == 1:
+            listkopi.displayKopi()
+        elif pilihan == 2:
+            listkopi.displayKopi()
+            kopi = input("Masukan jenis kopi yang ingin ditambahkan:")
+            listkopi.addKopi(kopi)
+        elif pilihan == 3:
+            listkopi.displayKopi()
+            kopi = input("Masukan nama kopi yang ingin dihapus:")
+            listkopi.deleteKopi(kopi)
+        else:
+            print("Masukan pilihan yang benar!")
+
+        print("Lanjut? y/n")
+        pilihan2 = ""
+        while(pilihan2!="n" and pilihan2!="y"):
+            pilihan2 = input()
+            if pilihan2 == "n":
+                os.system("cls")
+                exit()
+            elif pilihan2 == "y":
+                os.system("cls")
+                continue
